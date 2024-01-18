@@ -1,0 +1,111 @@
+{% extends 'clothapp/masterpage.html' %}
+{% load static %}
+{% block content %}
+
+    <style>
+    table{
+       border: 1px solid black;
+       border-radius:1px;
+       width: 320px;
+       height: 350px;
+       padding-right: 50px;
+       padding-left: 20px;
+       padding-bottom: 30px;
+     background-image: url(https://images.unsplash.com/photo-1633815475307-884ad652b80b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8NXwyQUcxRkRJU3VsVXx8ZW58MHx8fHx8);
+       
+       
+    }
+    .contact{
+        padding-left: 400px;
+        padding-top:120px;
+    }
+
+    
+
+    input{
+        
+        width: 250px;
+        border-radius: 5px;
+    }
+
+    button{
+        width: 250px;
+        color: white;
+        background-color:rgb(107, 4, 107);
+        border-radius: 5px;
+    }
+    h1{
+        color:white;
+        
+
+    }
+
+    .containerfluid{
+        height: 600px;
+    
+    }
+    </style>
+    <script>
+        function validateForms(){
+    var email=document.getElementById("email").value
+    var name=document.getElementById("name").value 
+    var message=document.getElementById("message").value
+    
+    
+
+    if (email===""||message===""||name===""){
+       // alert('hhhh')
+        document.getElementById("Error").innerHTML="All fields must be filled out"
+       
+        
+        return false
+    }
+    
+    
+    else{
+        alert('message sent successfully')
+        // document.getElementById("Error").innerHTML="Message sent successfully"
+    return true
+    }
+
+}
+    </script>
+
+    <div class="containerfluid" style="background-image: url(https://images.unsplash.com/photo-1656231877753-1658b926365f?q=80&w=1962&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);background-repeat: no-repeat ;background-size: cover;">
+    <div class="row">
+        <div class="col3"></div>
+        <div class="col6">
+            <form action="" method="post" onsubmit="return validateForms()">
+                {% csrf_token %}
+                <div class="contact">
+                    <table>
+                        <tr>
+                        <th><h1>Contact us</h1></th>
+                        </tr>
+                        <tr>
+                        <th><input type="text" name="name" id="name" placeholder="Name"></th>
+                        </tr>
+                        <tr>
+                        <th><input type="email" name="email" id="email" placeholder="Email"></th>
+                        </tr>
+                        <tr>
+                        <th><input type="text" name="message" id="message" placeholder="write a message"></th>
+                        </tr>
+                        <tr>
+                        <th><button type="submit">send</button></th>
+                        </tr>
+                        <tr>
+                        <th><p id="Error" style="color:red;">{{msg}}</p></th>
+                            </tr>
+                    </table>
+                </div>
+            </form>
+        </div>
+        <div class="col-3"></div>
+    </div>
+    </div>
+        
+
+
+    {% endblock %}
+   
